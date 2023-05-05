@@ -6,32 +6,32 @@ public class Player : MonoBehaviour
 {
     private const float EPS = 0.01f;
 
-    public float moveDir = 1.0f;    // 이동 방향 설정, 1일 시 우측, -1일 시 좌측으로 이동
-    public float currentDir = 1.0f; // 현재 이동 속도를 컨트롤하는 변수
-    public float interpolation = 1.0f;
-    public bool isChangingDir = false;
-    public float moveSpeed = 6f;
-    public float dirChangeSpeed = 2f;
+    public float moveDir = 1.0f;        // Direction for movement. 1 for RIGHT and -1 for LEFT
+    public float currentDir = 1.0f;     // A variable for controlling current movement speed
+    public float interpolation = 1.0f;  // A variable for interpolation(Lerp)
+    public bool isChangingDir = false;  // Movement constraint
+    public float moveSpeed = 8f;        // Movement speed factor
+    public float endgame_moveSpeed = 16.0f; // Maximum movement speed
+    public float dirChangeSpeed = 2f;   // Direction change speed factor
 
-    public Vector3 dirRight = new Vector3(1f, 0, 0);
-    public Vector3 dirLeft = new Vector3(-1f, 0, 0);
-    public float rotRight = -30f, rotLeft = 30f;
-    float ABS(float a)
+    public Vector3 dirRight = new Vector3(1f, 0, 0);    // Vector RIGHT
+    public Vector3 dirLeft = new Vector3(-1f, 0, 0);    // Vector LEFT
+    public float rotRight = -30f, rotLeft = 30f;        // Player angle
+    float ABS(float a)      // Returns absolute value
     {
         if (a < 0) return -a;
         return a;
     }
     void Start()
     {
-        this.transform.eulerAngles = new Vector3(0, -45f, 0);
+        this.transform.eulerAngles = new Vector3(0, rotRight, 0);   // Initial player angle configuration
     }
 
     void Update()
     {
-        // 현재 방향 값을 0 ~ 1 값으로 매핑하여 보간 값으로 사용
         interpolation = (currentDir + 1) / 2;
 
-        /// 키 인풋 받아서 처리
+        /// Key Input
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if(!isChangingDir)
@@ -41,7 +41,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        /// 방향 전환 처리
+        /// Direction Change
         if (isChangingDir)
         {
             if(ABS(moveDir - currentDir) > EPS)
@@ -55,7 +55,7 @@ public class Player : MonoBehaviour
                 isChangingDir = false;
             }
         }
-        /// 방향 전환 중 일어날 수 있는 버그 처리(클램핑)
+        /// Bug Handling
         if(currentDir < -1.01f)
         {
             currentDir = -1.0f;
@@ -66,7 +66,8 @@ public class Player : MonoBehaviour
         }
 
 
-        /// 플레이어 이동
+        /// Player translation
         this.transform.position += Vector3.Lerp(dirLeft, dirRight, interpolation) * moveSpeed * Time.deltaTime;
+        moveSpeed = Mathf.Lerp(moveSpeed, endgame_moveSpeed, 0.01f * Time.deltaTime);
     }
 }

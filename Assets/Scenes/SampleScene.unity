@@ -1028,6 +1028,7 @@ MonoBehaviour:
   obstacle:
   - {fileID: 531580468413439239, guid: 1bee0d00c073cd3409a6af20ef4cefe6, type: 3}
   - {fileID: 531580468413439239, guid: 9c012b060ef3c5648ab54f91ba01741b, type: 3}
+  interval: 3
 --- !u!1 &1699563922
 GameObject:
   m_ObjectHideFlags: 0
@@ -1329,7 +1330,7 @@ MonoBehaviour:
   currentDir: 1
   interpolation: 1
   isChangingDir: 0
-  moveSpeed: 6
+  moveSpeed: 8
   dirChangeSpeed: 2
   dirRight: {x: 1, y: 0, z: 0}
   dirLeft: {x: -1, y: 0, z: 0}
