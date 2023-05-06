@@ -17,6 +17,7 @@ public class Playtime : MonoBehaviour
     void Update()
     {
         score += Time.deltaTime;
-        ScoreBoard.text = "Play Time: " + score.ToString("0");
+        //ScoreBoard.text = "Time: " + score.ToString("0.0") + "초";
+        ScoreBoard.text = score.ToString("0");
     }
 }

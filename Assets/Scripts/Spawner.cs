@@ -49,11 +49,11 @@ public class Spawner : MonoBehaviour
                 float prob = Random.Range(0.0f, 10.0f);
                 if(prob < Star_Prob) {
                     float star_spawn_point = Random.Range(-12.0f, 12.0f);
-                    GameObject newObstacle = Instantiate(star[0], new Vector3(prev_spawn_point * 0.5f, 0.5f, -40), this.transform.rotation);
+                    GameObject newObstacle = Instantiate(star[0], new Vector3(prev_spawn_point * 0.3f, 0.5f, -40), this.transform.rotation);
                     Obstacle obstacleScript = newObstacle.GetComponent<Obstacle>();
                     obstacleScript.speed = obstacleSpeed;
-                }
-                Star_timer = 0;
+                    Star_timer = 0;
+                }                
             }
         }
 

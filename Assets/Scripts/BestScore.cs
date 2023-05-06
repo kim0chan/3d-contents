@@ -5,11 +5,14 @@ using UnityEngine.UI;
 
 public class BestScore : MonoBehaviour
 {
+    public int bestScore {get; set;}
     Text ScoreBoard;
-    public static int score = 1;
     // Start is called before the first frame update
     void Start()
     {
+        ScoreBoard = GetComponent<Text>();
+        bestScore = PlayerPrefs.GetInt("BestScore");
+        ScoreBoard.text = "Best: " + bestScore.ToString() + "점";
         
     }
 
