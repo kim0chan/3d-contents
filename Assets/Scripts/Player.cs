@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public AudioClip Turn;
+    public AudioClip StarCollected;
     private const float EPS = 0.01f;
 
     public float moveDir = 1.0f;        // Direction for movement. 1 for RIGHT and -1 for LEFT
@@ -17,6 +19,12 @@ public class Player : MonoBehaviour
     public Vector3 dirRight = new Vector3(1f, 0, 0);    // Vector RIGHT
     public Vector3 dirLeft = new Vector3(-1f, 0, 0);    // Vector LEFT
     public float rotRight = -30f, rotLeft = 30f;        // Player angle
+    void OnTriggerEnter(Collider col) {
+        if(col.gameObject.name == "Star_yellow(Clone)") {
+            Debug.Log("야호");
+            GetComponent<AudioSource>().PlayOneShot(StarCollected);
+        }
+    }
     float ABS(float a)      // Returns absolute value
     {
         if (a < 0) return -a;
@@ -36,6 +44,7 @@ public class Player : MonoBehaviour
         {
             if(!isChangingDir)
             {
+                GetComponent<AudioSource>().PlayOneShot(Turn);
                 moveDir *= -1;
                 isChangingDir = true;
             }

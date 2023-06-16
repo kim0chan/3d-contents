@@ -6,6 +6,7 @@ public class Spawner : MonoBehaviour
 {
     //Obstacle Section
     public GameObject[] obstacle;
+    public GameObject trees;
     int lr = 1;
     public float interval = 3.0f;
     public float endgame_interval = 1.0f;
@@ -31,6 +32,12 @@ public class Spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (timer >= 3.0f)
+        {
+            GameObject newWoodGroup = Instantiate(trees, new Vector3(0, 0, 0), this.transform.rotation);
+            WoodGroup woodGroupScript = newWoodGroup.GetComponent<WoodGroup>();
+            woodGroupScript.speed = obstacleSpeed;
+        }
         if(timer >= interval)
         {
             spawn_point = pivot + Random.Range(-pivot + 3.0f - interval, 4.0f);

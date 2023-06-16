@@ -5,9 +5,11 @@ using UnityEngine;
 public class NewFlag : MonoBehaviour
 {
     // Start is called before the first frame update
+    public AudioClip FlagHit;
 
     void OnTriggerEnter(Collider col) {
         if(col.gameObject.name == "Player") {
+            GetComponent<AudioSource>().PlayOneShot(FlagHit);
             GetComponent<Animator>().SetBool("isHit", true);
             // Debug.Log("animation gogo!");
         }
