@@ -13,8 +13,18 @@ public class Intro : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.time > 9.0f) {
+        if (Time.time > 8.8f) {
             SceneManager.LoadScene("TitleScene");
+        }
+        if (Input.anyKeyDown) {
+            if (Application.platform == RuntimePlatform.WindowsPlayer) {
+                if (Input.GetKeyDown(KeyCode.Escape)) {
+                    Application.Quit();
+                }
+                else {
+                SceneManager.LoadScene("TitleScene");
+                }
+            }
         }
     }
 }

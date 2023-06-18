@@ -14,7 +14,12 @@ public class Title : MonoBehaviour
     void Update()
     {
         if (Input.anyKeyDown) {
-            SceneManager.LoadScene("GameScene");
+            if (Input.GetKeyDown(KeyCode.Escape)) {
+                Application.Quit();
+            }
+            else {
+                SceneManager.LoadScene("GameScene");
+            }
         }
         if (Time.time > 60.0f) {
             SceneManager.LoadScene("GameScene");

@@ -5112,10 +5112,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -236412653614841994, guid: 56b414688a0a0bc45b7b54f770eefadf, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8dd8c0fe9dbd5fc4b99b4e2e8e4f73e3, type: 2}
     - target: {fileID: 919132149155446097, guid: 56b414688a0a0bc45b7b54f770eefadf, type: 3}
       propertyPath: m_Name
       value: bunny_rigging
       objectReference: {fileID: 0}
+    - target: {fileID: 6684295394808222897, guid: 56b414688a0a0bc45b7b54f770eefadf, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8dd8c0fe9dbd5fc4b99b4e2e8e4f73e3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56b414688a0a0bc45b7b54f770eefadf, type: 3}
 --- !u!4 &7259953128541557677 stripped

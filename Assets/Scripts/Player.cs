@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -21,7 +22,11 @@ public class Player : MonoBehaviour
     public float rotRight = -30f, rotLeft = 30f;        // Player angle
     void OnTriggerEnter(Collider col) {
         if(col.gameObject.name == "Star_yellow(Clone)") {
-            Debug.Log("야호");
+            Debug.Log("Star collected!");
+            GetComponent<AudioSource>().PlayOneShot(StarCollected);
+        }
+        if(col.gameObject.name == "") {
+            Debug.Log("Star collected!");
             GetComponent<AudioSource>().PlayOneShot(StarCollected);
         }
     }
@@ -47,6 +52,17 @@ public class Player : MonoBehaviour
                 GetComponent<AudioSource>().PlayOneShot(Turn);
                 moveDir *= -1;
                 isChangingDir = true;
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene("GameScene");
+        }
+
+        if (Application.platform == RuntimePlatform.WindowsPlayer) {
+            if (Input.GetKeyDown(KeyCode.Escape)) {
+                Application.Quit();
             }
         }
 
